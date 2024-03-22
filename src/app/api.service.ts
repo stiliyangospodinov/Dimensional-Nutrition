@@ -33,7 +33,7 @@ export class ApiService {
       catchError(error => {
         console.error('Error adding comment: ', error);
         return throwError(error);
-      })
+      }) 
     );
   }
 
