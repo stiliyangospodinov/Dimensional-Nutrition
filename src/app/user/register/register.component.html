@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Registration in Platform</title>
+  <link rel="stylesheet" href="/myproject/src/app/user/register/register.component.css">
+
+</head>
+<body>
+<div class="container">
+  <div class="login-box">
+    <h2>Register</h2>
+    <form class="register" [formGroup]="form" (ngSubmit)="register()">
+        <div class="input-box">
+            <input           class="input-error"
+            type="text"
+            name="username"
+            id="username"
+            formControlName="username"
+            />
+            <ng-container *ngIf="form.get('username')?.touched">
+              <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+                Username is required!
+              </p>
+              <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+                Username's length should not be less than 5!
+              </p>
+            </ng-container>
+            <label>Username</label>
+          </div>
+          <div class="input-box">
+            <input 
+            type="text"
+            name="tel"
+            id="tel"
+            formControlName="tel">
+            <label>Phone Number</label>
+          </div>
+      <div class="input-box">
+        <input type="email" 
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email"
+        />
+        <ng-container *ngIf="form.get('email')?.touched">
+          <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+            Email is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="form.get('email')?.errors?.['appEmailValidator']"
+          >
+            Email is not valid!
+          </p>
+        </ng-container>
+        <label>Email</label>
+      </div>
+      <ng-container formGroupName="passGroup">
+      <div class="input-box">
+        <input type="password"
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+        />
+        <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
+          >
+            Password is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
+          >
+            Password must be at least
+            {{
+              form.get('passGroup')?.get('password')?.errors?.['minlength']?.['requiredLength']
+            }}
+            characters!
+          </p>
+        </ng-container>
+        <label>Password</label>
+      </div>
+      <div class="input-box">
+        <input type="password"
+        type="password"
+        name="rePassword"
+        id="rePassword"
+        formControlName="rePassword"
+        />
+        <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator'] ||
+             form.get('passGroup')?.get('rePassword')?.errors?.['required']"
+          >
+            Repeat Password does not match password!
+          </p>
+        </ng-container>
+        <label>Conifirm Password</label>
+      </div>
+    </ng-container>
+      <button [disabled]="form.invalid" class="btn">Register</button>
+      <div class="signup-link">
+        <a routerLink="/login">Login</a>
+      </div>
+    </form>
+  </div>
+<!-- <div class="span-container">
+  <span style="--i:0;"></span>
+  <span style="--i:1;"></span>
+  <span style="--i:2;"></span>
+  <span style="--i:3;"></span>
+  <span style="--i:4;"></span>
+  <span style="--i:5;"></span>
+  <span style="--i:6;"></span>
+  <span style="--i:7;"></span>
+  <span style="--i:8;"></span>
+  <span style="--i:9;"></span>
+  <span style="--i:10;"></span>
+  <span style="--i:11;"></span>
+  <span style="--i:12;"></span>
+  <span style="--i:13;"></span>
+  <span style="--i:14;"></span>
+  <span style="--i:15;"></span>
+  <span style="--i:16;"></span>
+  <span style="--i:17;"></span>
+  <span style="--i:18;"></span>
+  <span style="--i:19;"></span>
+  <span style="--i:20;"></span>
+  <span style="--i:21;"></span>
+  <span style="--i:22;"></span>
+  <span style="--i:23;"></span>
+  <span style="--i:24;"></span>
+  <span style="--i:25;"></span>
+  <span style="--i:26;"></span>
+  <span style="--i:27;"></span>
+  <span style="--i:28;"></span>
+  <span style="--i:29;"></span>
+  <span style="--i:30;"></span>
+  <span style="--i:31;"></span>
+  <span style="--i:32;"></span>
+  <span style="--i:33;"></span>
+  <span style="--i:34;"></span>
+  <span style="--i:35;"></span>
+  <span style="--i:36;"></span>
+  <span style="--i:37;"></span>
+  <span style="--i:38;"></span>
+  <span style="--i:39;"></span>
+  <span style="--i:40;"></span>
+  <span style="--i:41;"></span>
+  <span style="--i:42;"></span>
+  <span style="--i:43;"></span>
+  <span style="--i:44;"></span>
+  <span style="--i:45;"></span>
+  <span style="--i:46;"></span>
+  <span style="--i:47;"></span>
+  <span style="--i:48;"></span>
+  <span style="--i:49;"></span>
+</div> -->
+</div>
+</body>
+</html>

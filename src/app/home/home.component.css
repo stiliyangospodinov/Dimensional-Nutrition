@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Risque&display=swap");
+
+body {
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-right: 7em;
+  
+}
+
+.hero-section {
+ margin-top: 10%;
+ margin-left: 10%;
+ justify-content: center;
+  /* padding: 80px 30px 0 0; */
+  
+}
+.hero-heading {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+.hero-subheading {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  animation: myAnim 2s ease 0s 1 normal forwards;
+  margin-left: 10%;
+}
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(-250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(-65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(-28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(-8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+}
+
+.video-background {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+overflow: hidden; 
+z-index: -2;/* This prevents video overflow on some browsers */
+}
+
+.video-background video {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%); /* Center the video */
+min-width: 100%; /* Ensures video covers the entire container */
+min-height: 100%;
+}
+.video-background video {
+opacity: 0.6; /* Adjust opacity between 0 (fully transparent) and 1 (fully opaque) */
+}
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #6c6161;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #dc5130;
+  opacity: 0.3;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.glow-on-hover{
+  margin-left: 20px;
+}
+
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+svg {
+	font-family: "Risque", sans-serif;
+	width: 100%; height: 100%;
+}
+svg text {
+	animation: stroke 5s infinite alternate;
+	stroke-width: 2;
+	stroke: #000000;
+	font-size: 100px;
+}
+@keyframes stroke {
+	0%   {
+		fill: rgba(34,64,95,0); stroke: rgba(0,0,0,1);
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+	}
+	70%  {fill: rgba(34,64,95,0); stroke: rgba(0,0,0,1); }
+	80%  {fill: rgba(34,64,95,0); stroke: rgba(0,0,0,1); stroke-width: 3; }
+	100% {
+		fill: rgba(34,64,95,1); stroke: rgba(0,0,0,0);
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "dimensional-f4ccd"
+  },
+  "targets": {
+    "dimensional-f4ccd": {
+      "hosting": {
+        "myproject": [
+          "dimensional-f4ccd"
+        ]
+      }
+    }
+  }
+}

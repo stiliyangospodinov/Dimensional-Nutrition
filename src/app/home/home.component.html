@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dimensional Nutritions</title>
+</head>
+<body>
+    <div class="all">
+        <div class="video-background">
+            <video loop muted autoplay src="assets/video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    <section class="hero-section">
+      <div class="container">
+        <div class="wrapper">
+            <svg>
+                <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                    Dimensional Nutrition
+                </text>
+            </svg>
+        </div>
+        <p class="hero-subheading">If you want to use additional discounts, you can log in or register.</p>
+        <div *ngIf="!isLogged" class="buttons">
+            <button routerLink="/login" class="glow-on-hover" type="button">Login</button>
+            <button routerLink="/register"class="glow-on-hover" type="button">Register</button>
+        </div>
+       
+      </div>
+    </section>
+    </div>
+   
+
+</body>
+</html>

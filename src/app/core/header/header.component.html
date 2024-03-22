@@ -1,0 +1,38 @@
+<header>
+    <div class="container_12">
+      <div class="wrapper p3">
+        <div class="grid_12">
+          <div class="wrapper border-bot">
+            <h1><a href="index.html">DN<strong>.com</strong></a></h1>
+            <nav>
+              <ul class="menu">
+                <li><a routerLink="/home">Home</a></li>
+                <li><a routerLink="/products">Products</a></li>
+                <li><a routerLink="/discount">Discount</a></li>
+                <li><a routerLink="/about">About</a></li>
+                <li><a routerLink="/comments">Comments</a></li>
+                <li><a routerLink="/contact">Contact</a></li>
+              </ul>
+              <div class="log-reg-nav">
+                <ul  *ngIf="!isLoggedIn">
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>
+            </ul>
+            <ul *ngIf="isLoggedIn">
+              <li>
+                <a routerLink="/profile">{{ username }}'s profile</a>
+              </li>
+              <li (click)="logout()">
+                <a>Logout</a>
+              </li>
+            </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+    </div>
+</div>
+  </header>
+  
+
+
