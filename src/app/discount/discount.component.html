@@ -1,20 +1,21 @@
-<div class="responsive-container-block bigContainer">
+<body>
+   <div class="responsive-container-block bigContainer">
     <div class="responsive-container-block Container bottomContainer">
       <div *ngIf="!isLogged" class="allText bottomText">
         <p class="text-blk subHeadingText">
             APRIL DISCOUNT
         </p>
         <p class="text-blk description">
-           We have 10% discount for our products for April.If you additional discount, you need to sign up or login.
+           We have 10% discount for our products for April.If you want additional discount, you need to sign up or login.
         </p>
-        <a>
+        <div class="buttons">
           <button routerLink="/login" class="explore">
             Login
           </button>
           <button routerLink="/register" class="explore">
             Register
           </button>
-        </a>
+        </div>
         <marquee behavior="" direction="">You can view more about our products, if you make you account.</marquee>
       </div>
       <div *ngIf="isLogged"class="allText bottomText">
@@ -27,3 +28,4 @@
         <p>Promocode : {{discount?.promocode}}</p>
         <marquee behavior="" direction="">You can view more about our products, if you make you account.</marquee>
       </div>
+      

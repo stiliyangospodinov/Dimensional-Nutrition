@@ -78,9 +78,9 @@
               <button class="view-more" (click)="toggleDescription()" *ngIf="product.description.length > 60">{{ showFullDescription ? 'Show Less' : 'Show More' }}</button>
               <p class="full-desc" *ngIf="showFullDescription">{{ product.description }}</p>
               <h2>Price: {{product.price}}</h2>
-              <div class="cast">
-                <a [routerLink]="['/product', product.name]"><h3>Comments</h3></a>
-              </div>
+              <div *ngIf="isLogged" class="like-btn">
+              <app-like-btn></app-like-btn>
+            </div>
           </div>
       </div>
   </div>

@@ -43,7 +43,6 @@ export class UserService implements OnDestroy {
   register(username: string, email: string, tel: string, password: string, rePassword: string): void {
     this.auth.fetchSignInMethodsForEmail(email).then((methods) => {
       if (methods.length === 0) {
-        // Няма съществуващ акаунт с този имейл
         this.auth.createUserWithEmailAndPassword(email, password).then(userCredential => {
           const userId = userCredential?.user?.uid;
           if (userId) {
@@ -70,7 +69,6 @@ export class UserService implements OnDestroy {
           throw error;
         });
       } else {
-        // Има съществуващ акаунт с този имейл
         window.alert('An account with this email already exists.');
       }
     }).catch(error => {
@@ -80,7 +78,7 @@ export class UserService implements OnDestroy {
   logout() {
     return from(this.auth.signOut()).pipe(
       tap(() => {
-        this.user$$.next(undefined); // Нулиране на потребителските данни
+        this.user$$.next(undefined);
       })
     );
   }
@@ -98,7 +96,7 @@ export class UserService implements OnDestroy {
       }),
       catchError(error => {
         console.error('Error updating profile:', error);
-        throw error; // Разпространяваме грешката надолу
+        throw error;
       })
     );
   }

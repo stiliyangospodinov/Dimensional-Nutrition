@@ -31,8 +31,6 @@ export class ProfileComponent implements OnInit {
       [Validators.required, appEmailValidator],
     ],
     tel: [''],
-    // ToDo: render this from the template and make more fields on click of a button
-    // persons: this.fb.array([]),
   });
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}

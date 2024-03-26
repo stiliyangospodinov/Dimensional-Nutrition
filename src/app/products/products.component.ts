@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/products';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-products',
@@ -15,11 +16,14 @@ export class ProductsComponent implements OnInit {
     this.showFullDescription = !this.showFullDescription;
   }
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router, private userService: UserService) {}
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
 
   ngOnInit(): void {
     this.apiService.getData().subscribe((data: Product[]) => {
-      console.log(data); // Извеждане на данните в конзолата
+      console.log(data);
       this.products = data;
     });
   }

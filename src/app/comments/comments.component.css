@@ -11,6 +11,9 @@
     font-family: system-ui;
     
   }
+  section{
+    padding:1em 0 10em 35em;
+  }
   .comment-box, .post-comment .list{
     border-radius: 6px;
     box-shadow: 0 2px 2px #0002;

@@ -9,8 +9,6 @@
 	<section>
 	<div class="comment-sesion">
 		<div class="post-comment">
-
-			<!---Tuk e predishniqt komentar-->
 			<div *ngFor="let comment of comments" class="list">
 				<div class="user">
 					<div class="user-image"><img src="{{comment.img}}" alt="image"></div>
@@ -27,7 +25,7 @@
 		<div *ngIf="isLogged" class="comment-box">
 			<div class="user">
 				<div class="image"><img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="" class="profile-pic"></div>
-				<div class="name">{{username}}</div>
+				<div class="name"><p>{{username}}</p></div>
 			</div>
 			<div>
 				<form (submit)="addComment($event)" method="post">
