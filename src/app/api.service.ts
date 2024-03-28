@@ -17,8 +17,11 @@ export class ApiService {
     .collection<Product>("products ")
     .valueChanges();
   }
-  getDiscount(): Observable<Discount | undefined> {
+  getDiscountUser(): Observable<Discount | undefined> {
     return this.firestore.doc<Discount>(`discount/disc`).valueChanges();
+  }
+  getDiscountGuest(): Observable<Discount | undefined> {
+    return this.firestore.doc<Discount>(`discount/disc_guest`).valueChanges();
   }
   getComments() {
     return this.firestore

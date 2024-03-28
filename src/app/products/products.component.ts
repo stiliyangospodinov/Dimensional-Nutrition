@@ -11,6 +11,7 @@ import { UserService } from '../user/user.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  isLoading: boolean = true;
   showFullDescription: boolean = false;
   toggleDescription() {
     this.showFullDescription = !this.showFullDescription;
@@ -20,11 +21,17 @@ export class ProductsComponent implements OnInit {
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
-
   ngOnInit(): void {
-    this.apiService.getData().subscribe((data: Product[]) => {
-      console.log(data);
-      this.products = data;
-    });
+    this.apiService.getData().subscribe(
+      (data: Product[]) => {
+        console.log(data);
+        this.products = data;
+        this.isLoading = false;
+      },
+      (err) => {
+        this.isLoading = false;
+        console.error(`Error: ${err}`);
+      }
+    );
   }
 }

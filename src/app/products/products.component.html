@@ -54,6 +54,9 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.7.0/hint.min.css'><link rel="stylesheet" href="products.component.css">
   </head>
   <body>
+    <div *ngIf="isLoading">
+      <app-loader />
+    </div>
   <div *ngFor="let product of products" class="wrapper">
       <div class="card">
           <div class="poster"><img src={{product.img}} alt="Location Unknown"></div>

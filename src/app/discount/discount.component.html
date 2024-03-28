@@ -6,7 +6,7 @@
             APRIL DISCOUNT
         </p>
         <p class="text-blk description">
-           We have 10% discount for our products for April.If you want additional discount, you need to sign up or login.
+           We have {{discountGuest?.guest_discount}}% discount for our products for April.If you want additional discount, you need to sign up or login.
         </p>
         <div class="buttons">
           <button routerLink="/login" class="explore">
@@ -23,9 +23,9 @@
             APRIL DISCOUNT
         </p>
         <p class="text-blk description">
-           Congratulations! You have {{discount?.percent}}% discount for our products for April.</p>
+           Congratulations! You have {{discountUser?.percent}}% discount for our products for April.</p>
            <p>Show this promocode in our shop to get your discount!</p>
-        <p>Promocode : {{discount?.promocode}}</p>
+        <p>Promocode : {{discountUser?.promocode}}</p>
         <marquee behavior="" direction="">You can view more about our products, if you make you account.</marquee>
       </div>
       

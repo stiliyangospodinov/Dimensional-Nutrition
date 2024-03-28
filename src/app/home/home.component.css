@@ -11,9 +11,7 @@ body {
 .hero-section {
  margin-top: 10%;
  margin-left: 10%;
- justify-content: center;
-  /* padding: 80px 30px 0 0; */
-  
+ justify-content: center;  
 }
 .hero-heading {
   font-size: 4em;
@@ -23,8 +21,8 @@ body {
   font-size: 1.5em;
   margin-bottom: 40px;
   animation: myAnim 2s ease 0s 1 normal forwards;
-  margin-left: 10%;
 }
+.buttons {margin-right: 40px;}
 @keyframes myAnim {
 	0% {
 		animation-timing-function: ease-in;
@@ -76,19 +74,19 @@ left: 0;
 width: 100vw;
 height: 100vh;
 overflow: hidden; 
-z-index: -2;/* This prevents video overflow on some browsers */
+z-index: -2;
 }
 
 .video-background video {
 position: absolute;
 top: 50%;
 left: 50%;
-transform: translate(-50%, -50%); /* Center the video */
-min-width: 100%; /* Ensures video covers the entire container */
+transform: translate(-50%, -50%);
+min-width: 100%; 
 min-height: 100%;
 }
 .video-background video {
-opacity: 0.6; /* Adjust opacity between 0 (fully transparent) and 1 (fully opaque) */
+opacity: 0.6; 
 }
 .glow-on-hover {
   width: 220px;

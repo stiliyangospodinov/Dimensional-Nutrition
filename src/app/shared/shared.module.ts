@@ -12,6 +12,6 @@ import { LoaderComponent } from './loader/loader.component';
   imports: [
     CommonModule
   ],
-  exports: [AppEmailDirective,SlicePipe,LikeBtnComponent],
+  exports: [AppEmailDirective,SlicePipe,LikeBtnComponent,LoaderComponent],
 })
 export class SharedModule {}
