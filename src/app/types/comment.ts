@@ -3,4 +3,5 @@ export interface Comment {
     comment: string;
     img:string;
     posted:string;
+    id?: any;
 }

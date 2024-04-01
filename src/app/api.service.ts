@@ -39,8 +39,19 @@ export class ApiService {
       }) 
     );
   }
+  deleteComment(commentId: string): Observable<void> {
+    const commentDoc = this.firestore.doc<Comment>(`comments/${commentId}`);
 
+    return from(commentDoc.delete()).pipe(
+      catchError(error => {
+        console.error('Error deleting comment: ', error);
+        return throwError(error);
+      }) 
+    );
+  }
 }
+
+
 
 
 

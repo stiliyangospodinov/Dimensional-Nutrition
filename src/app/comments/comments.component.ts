@@ -14,6 +14,8 @@ import { DatePipe } from '@angular/common';
 export class CommentsComponent implements OnInit {
   comment: string = '';
   comments: Comment[] = [];
+  newCommentPosted: boolean = false;
+  newCommentId: string | undefined;
   constructor(private userService: UserService, private apiService: ApiService, private datePipe: DatePipe) {}
 
   get isLogged(): boolean {
@@ -39,9 +41,21 @@ export class CommentsComponent implements OnInit {
       posted: formattedDate || ''
     };
     
-    this.apiService.postComment(newComment).subscribe(() => {
+    this.apiService.postComment(newComment).subscribe((id:string) => {
+      newComment.id = id; 
       this.comments.push(newComment);
       this.comment = ''; 
+      this.newCommentPosted = true;
+      this.newCommentId = id;
     });
+  }
+  closeNewComment(commentId: string | undefined): void {
+    if (commentId) {
+      this.apiService.deleteComment(commentId).subscribe(() => {
+        // Изтриваме коментара от локалния списък
+        this.comments = this.comments.filter(comment => comment.id !== commentId);
+      });
+    }
+    this.newCommentPosted = false;
   }
 }

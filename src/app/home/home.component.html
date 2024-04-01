@@ -8,7 +8,7 @@
 <body>
     <div class="all">
         <div class="video-background">
-            <video muted loop autoplay src="assets/video.mp4" type="video/mp4">
+            <video muted="true" loop autoplay src="assets/video1.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -21,11 +21,13 @@
                 </text>
             </svg>
         </div>
+        <div *ngIf="!isLogged">
         <p class="hero-subheading">If you want to use additional discounts, you can log in or register.</p>
-        <div *ngIf="!isLogged" class="buttons">
+        <div class="buttons">
             <button routerLink="/login" class="glow-on-hover" type="button">Login</button>
             <button routerLink="/register"class="glow-on-hover" type="button">Register</button>
         </div>
+      </div>
        
       </div>
     </section>

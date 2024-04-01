@@ -17,7 +17,8 @@
   .comment-box, .post-comment .list{
     border-radius: 6px;
     box-shadow: 0 2px 2px #0002;
-  background: rgb(190, 209, 215);
+  background: white;
+
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(0px);
@@ -118,6 +119,22 @@
     height: auto;
     margin: 0 auto;
   }
+  .comment-sesion {
+    position: relative;
+  }
+  
+  .close-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .comment-box {
+    margin-top: 20px;
+  }
+  
   
   @media screen and(max-width:660px) {
     .comment-session{width: 100%;}

@@ -132,6 +132,7 @@ body{
     padding-right: 45px;
     padding-bottom: 9px;
     padding-left: 45px;
+    
   }
   
   .explore:hover {
@@ -142,8 +143,9 @@ body{
     background-attachment: initial;
     background-origin: initial;
     background-clip: initial;
-    background-color: rgb(255, 235, 234);
-    color: rgb(244, 152, 146);
+    background-color: blue
+
+
   }
   
   .responsive-container-block.Container {
