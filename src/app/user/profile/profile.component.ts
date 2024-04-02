@@ -36,7 +36,8 @@ export class ProfileComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
-    const { username, email, tel } = this.userService.user!;
+    const userFromSessionStorage = JSON.parse(sessionStorage.getItem('user') || '{}');
+    const { username, email, tel } = userFromSessionStorage;
     this.profileDetails = {
       username,
       email,
@@ -49,24 +50,28 @@ export class ProfileComponent implements OnInit {
       tel,
     });
   }
+
   logout(): void {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['/home']);
     });
   }
+
   toggleEditMode(): void {
     this.isEditMode = !this.isEditMode
-}
-saveProfileHandler(): void {
-  if (this.form.invalid) {
-    return;
   }
 
-  this.profileDetails = { ...this.form.value } as Profile;
-  const { username, email, tel } = this.profileDetails;
+  saveProfileHandler(): void {
+    if (this.form.invalid) {
+      return;
+    }
 
-  this.userService.updateProfile(username!, email!, tel!).subscribe(() => {
-    this.toggleEditMode();
-  });
-}
+    this.profileDetails = { ...this.form.value } as Profile;
+    const { username, email, tel } = this.profileDetails;
+
+    this.userService.updateProfile(username!, email!, tel!).subscribe(() => {
+      sessionStorage.setItem('user', JSON.stringify(this.profileDetails)); // Update user data in sessionStorage
+      this.toggleEditMode();
+    });
+  }
 }

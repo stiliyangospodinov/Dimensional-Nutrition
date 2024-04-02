@@ -9,21 +9,21 @@ import { BehaviorSubject, Observable, Subscription, catchError, from, switchMap,
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
-  private user$$ = new BehaviorSubject<User | undefined>(this.retrieveUserFromLocalStorage());
+  private user$$ = new BehaviorSubject<User | undefined>(this.retrieveUserFromSessionStorage());
   public user$ = this.user$$.asObservable();
   user: User | undefined;
   USER_KEY = '[user]'
-  get isLogged():boolean{
+  get isLogged(): boolean {
     return !!this.user
   }
   subscription: Subscription;
-  constructor(private firestore: AngularFirestore, private auth: AngularFireAuth, private router:Router){
+  constructor(private firestore: AngularFirestore, private auth: AngularFireAuth, private router: Router) {
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
     });
   }
-  private retrieveUserFromLocalStorage(): User | undefined {
-    const userJson = localStorage.getItem('user');
+  private retrieveUserFromSessionStorage(): User | undefined {
+    const userJson = sessionStorage.getItem('user');
     return userJson ? JSON.parse(userJson) : undefined;
   }
 
@@ -35,9 +35,9 @@ export class UserService implements OnDestroy {
         const userDoc = this.firestore.collection('users').doc(userId);
         const userDocSnapshot = await userDoc.get().toPromise();
         if (userDocSnapshot && userDocSnapshot.exists) {
-          const userData = userDocSnapshot.data() as User; // Предполагаме, че типът на данните на потребителя е User
+          const userData = userDocSnapshot.data() as User;
           this.user$$.next(userData);
-
+          sessionStorage.setItem('user', JSON.stringify(userData)); // Store user data in sessionStorage
         }
       }
     } catch (error) {
@@ -45,7 +45,7 @@ export class UserService implements OnDestroy {
       throw error;
     }
   }
-  
+
   register(username: string, email: string, tel: string, password: string, rePassword: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.auth.fetchSignInMethodsForEmail(email).then((methods) => {
@@ -64,7 +64,7 @@ export class UserService implements OnDestroy {
               ).subscribe({
                 next: () => {
                   console.log('Registration successful');
-                  resolve(); 
+                  resolve();
                 },
                 error: (error) => {
                   console.error('Registration failed:', error);
@@ -74,17 +74,18 @@ export class UserService implements OnDestroy {
             }
           }).catch(error => {
             console.error('Registration failed:', error);
-            reject(error); 
+            reject(error);
           });
         } else {
-          window.alert('An account with this email already exists.'); 
+          window.alert('An account with this email already exists.');
         }
       }).catch(error => {
         console.error('Error checking email existence:', error);
-        reject(error); 
+        reject(error);
       });
     });
   }
+
   async checkIfUserExists(email: string): Promise<boolean> {
     try {
       const methods = await this.auth.fetchSignInMethodsForEmail(email);
@@ -95,13 +96,15 @@ export class UserService implements OnDestroy {
     }
   }
 
-  logout() {
+  logout(): Observable<void> {
     return from(this.auth.signOut()).pipe(
       tap(() => {
+        sessionStorage.removeItem('user'); // Remove user data from sessionStorage upon logout
         this.user$$.next(undefined);
       })
     );
   }
+
   updateProfile(username: string, email: string, tel?: string): Observable<void> {
     return this.auth.authState.pipe(
       switchMap(user => {
@@ -125,5 +128,3 @@ export class UserService implements OnDestroy {
     this.subscription.unsubscribe();
   }
 }
-
-
