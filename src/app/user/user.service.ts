@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, Subscription, catchError, from, switchMap,
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
+  private user$$ = new BehaviorSubject<User | undefined>(this.retrieveUserFromLocalStorage());
   public user$ = this.user$$.asObservable();
   user: User | undefined;
   USER_KEY = '[user]'
@@ -22,6 +22,11 @@ export class UserService implements OnDestroy {
       this.user = user;
     });
   }
+  private retrieveUserFromLocalStorage(): User | undefined {
+    const userJson = localStorage.getItem('user');
+    return userJson ? JSON.parse(userJson) : undefined;
+  }
+
   async login(email: string, password: string): Promise<void> {
     try {
       const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
@@ -31,7 +36,8 @@ export class UserService implements OnDestroy {
         const userDocSnapshot = await userDoc.get().toPromise();
         if (userDocSnapshot && userDocSnapshot.exists) {
           const userData = userDocSnapshot.data() as User; // Предполагаме, че типът на данните на потребителя е User
-          this.user$$.next(userData); // Актуализиране на потребителските данни
+          this.user$$.next(userData);
+
         }
       }
     } catch (error) {
@@ -40,41 +46,55 @@ export class UserService implements OnDestroy {
     }
   }
   
-  register(username: string, email: string, tel: string, password: string, rePassword: string): void {
-    this.auth.fetchSignInMethodsForEmail(email).then((methods) => {
-      if (methods.length === 0) {
-        this.auth.createUserWithEmailAndPassword(email, password).then(userCredential => {
-          const userId = userCredential?.user?.uid;
-          if (userId) {
-            from(this.firestore.collection('users').doc(userId).set({
-              username,
-              email,
-              tel,
-            })).pipe(
-              tap(() => {
-                this.user$$.next({ username, email, tel, password, rePassword });
-              })
-            ).subscribe({
-              next: () => {
-                console.log('Registration successful');
-              },
-              error: (error) => {
-                window.alert('Registration failed');
-                throw error;
-              }
-            });
-          }
-        }).catch(error => {
-          console.error('Registration failed:', error);
-          throw error;
-        });
-      } else {
-        window.alert('An account with this email already exists.');
-      }
-    }).catch(error => {
-      console.error('Error checking email existence:', error);
+  register(username: string, email: string, tel: string, password: string, rePassword: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.auth.fetchSignInMethodsForEmail(email).then((methods) => {
+        if (methods.length === 0) {
+          this.auth.createUserWithEmailAndPassword(email, password).then(userCredential => {
+            const userId = userCredential?.user?.uid;
+            if (userId) {
+              from(this.firestore.collection('users').doc(userId).set({
+                username,
+                email,
+                tel,
+              })).pipe(
+                tap(() => {
+                  this.user$$.next({ username, email, tel, password, rePassword });
+                })
+              ).subscribe({
+                next: () => {
+                  console.log('Registration successful');
+                  resolve(); 
+                },
+                error: (error) => {
+                  console.error('Registration failed:', error);
+                  reject(error);
+                }
+              });
+            }
+          }).catch(error => {
+            console.error('Registration failed:', error);
+            reject(error); 
+          });
+        } else {
+          window.alert('An account with this email already exists.'); 
+        }
+      }).catch(error => {
+        console.error('Error checking email existence:', error);
+        reject(error); 
+      });
     });
   }
+  async checkIfUserExists(email: string): Promise<boolean> {
+    try {
+      const methods = await this.auth.fetchSignInMethodsForEmail(email);
+      return methods.length > 0;
+    } catch (error) {
+      console.error('Error checking if user exists:', error);
+      throw error;
+    }
+  }
+
   logout() {
     return from(this.auth.signOut()).pipe(
       tap(() => {

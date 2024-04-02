@@ -42,13 +42,16 @@ export class RegisterComponent {
     if (!username || !email || !tel || !password || !rePassword) {
       return;
     }
+  
     const userData = { username, email, tel, password, rePassword };
     console.log('Data to be sent to Firebase Authentication:', userData);
   
-  
-    this.userService
-      .register(username, email,tel, password,rePassword)
+    this.userService.register(username, email, tel, password, rePassword)
+      .then(() => {
         this.router.navigate(['/products']);
-    
+      })
+      .catch(error => {
+        window.alert(error); // Показване на съобщение за грешка
+      });
   }
 }

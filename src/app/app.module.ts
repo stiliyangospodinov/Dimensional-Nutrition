@@ -20,6 +20,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CommentsComponent } from './comments/comments.component';
 import { FormsModule } from '@angular/forms';
+import { UserService } from './user/user.service';
 @NgModule({
   declarations: [
     AppComponent,
