@@ -31,9 +31,9 @@
   }
   
   .button-like.liked .fa {
-    color: #cc4b37; /* променете цвета на сърцето при активация на класа "liked" */
+    color: #cc4b37;
   }
   
   .button-like.liked span {
-    color: #cc4b37; /* оставете цвета на текста на бутона непроменен */
+    color: #cc4b37; 
   }

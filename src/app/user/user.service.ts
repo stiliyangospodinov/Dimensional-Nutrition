@@ -37,7 +37,7 @@ export class UserService implements OnDestroy {
         if (userDocSnapshot && userDocSnapshot.exists) {
           const userData = userDocSnapshot.data() as User;
           this.user$$.next(userData);
-          sessionStorage.setItem('user', JSON.stringify(userData)); // Store user data in sessionStorage
+          sessionStorage.setItem('user', JSON.stringify(userData));
         }
       }
     } catch (error) {
@@ -99,7 +99,7 @@ export class UserService implements OnDestroy {
   logout(): Observable<void> {
     return from(this.auth.signOut()).pipe(
       tap(() => {
-        sessionStorage.removeItem('user'); // Remove user data from sessionStorage upon logout
+        sessionStorage.removeItem('user');
         this.user$$.next(undefined);
       })
     );

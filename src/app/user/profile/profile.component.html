@@ -1,78 +1,64 @@
 
-  <section class="main">
-    <!-- readonlymode -->
-    <ng-container *ngIf="!isEditMode">
-  <div class="profile-card">
-    <div class="image">
-      <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="" class="profile-pic">
-    </div>
-    <div class="data">
-        <div class="flex">
-            <p>Username:</p>
-            <p>{{ profileDetails.username }}</p>
-          </div>
-          <div class="flex">
-            <p>Email:</p>
-            <p>{{ profileDetails.email }}</p>
-          </div>
-          <div class="flex">
-            <p>Phone:</p>
-            <p>{{ profileDetails.tel }}</p>
-          </div>
-    </div>
-    <div class="buttons">
-      <a class="btn" (click)="toggleEditMode()">Edit</a>
-      <a (click)="logout()" class="btn">Logout</a>
-    </div>
+<section class="main">
+  <!-- readonlymode -->
+  <ng-container *ngIf="!isEditMode">
+<div class="profile-card">
+  <div class="image">
+    <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="" class="profile-pic">
   </div>
-</ng-container>
-  <!-- edit mode  -->
-<ng-container *ngIf="isEditMode">
-  <form [formGroup]="form" (ngSubmit)="saveProfileHandler()">
-  <div class="profile-card">
-    <div class="image">
-      <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="" class="profile-pic">
-    </div>
-    <div class="data">
-        <div class="flex">
-            <p>Username:</p>
-            <input type="text" id="username" formControlName="username" />
-          </div>
-          <ng-container *ngIf="form.get('username')?.touched">
-            <p class="error" *ngIf="form.get('username')?.errors?.['required']">
-              Username is required!
-            </p>
-            <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
-              Username's length should not be less than 5!
-            </p>
-          </ng-container>
-          <div class="flex">
-            <p>Email:</p>
-            <input type="text" id="email" formControlName="email" />
-          </div>
-          <ng-container *ngIf="form.get('email')?.touched">
-            <p class="error" *ngIf="form.get('email')?.errors?.['required']">
-              Email is required!
-            </p>
-            <p
-              class="error"
-              *ngIf="form.get('email')?.errors?.['appEmailValidator']"
-            >
-              Email is not valid!
-            </p>
-          </ng-container>
   
-          <div class="flex">
-            <p>Phone:</p>
-            <input type="text" id="tel" formControlName="tel" />
-          </div>
-    </div>
-    <div class="buttons">
-      <a class="btn" (click)="toggleEditMode()">Cancel</a>
-      <a class="btn" (click)="saveProfileHandler()">Save</a>
-    </div>
+  <div class="data">
+      <div class="flex">
+          <p class="label">Username:</p>
+          <p class="value">{{ profileDetails.username }}</p>
+        </div>
+        <div class="flex">
+          <p class="label">Email:</p>
+          <p class="value">{{ profileDetails.email }}</p>
+        </div>
+        <div class="flex">
+          <p class="label">Phone:</p>
+          <p class="value">{{ profileDetails.tel }}</p>
+        </div>
   </div>
+  <div class="buttons">
+    <a class="btn" (click)="toggleEditMode()">Edit</a>
+    <a (click)="logout()" class="btn">Logout</a>
+  </div>
+</div>
+</ng-container>
+<!-- edit mode  -->
+<ng-container *ngIf="isEditMode">
+<form [formGroup]="form" (ngSubmit)="saveProfileHandler()">
+<div class="profile-card">
+  <div class="image">
+    <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="" class="profile-pic">
+  </div>
+  <div class="data">
+      <div class="flex">
+          <p>Username:</p>
+          <input type="text" id="username" formControlName="username" class="input" />
+        </div>
+        <ng-container *ngIf="form.get('username')?.touched">
+          <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+            Username is required!
+          </p>
+          <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+            Username's length should not be less than 5!
+          </p>
+        </ng-container>
+
+        <div class="flex">
+          <p>Phone:</p>
+          <input type="text" id="tel" formControlName="tel" class="input" />
+        </div>
+  </div>
+  <div class="buttons">
+    <a class="btn" (click)="toggleEditMode()">Cancel</a>
+    <a class="btn" (click)="saveProfileHandler()">Save</a>
+  </div>
+</div>
 </form>
 </ng-container>
-  
+
 </section>

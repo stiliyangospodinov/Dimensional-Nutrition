@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
     const { username, email, tel } = this.profileDetails;
 
     this.userService.updateProfile(username!, email!, tel!).subscribe(() => {
-      sessionStorage.setItem('user', JSON.stringify(this.profileDetails)); // Update user data in sessionStorage
+      sessionStorage.setItem('user', JSON.stringify(this.profileDetails));
       this.toggleEditMode();
     });
   }

@@ -849,7 +849,7 @@ body{
   }
   
   button:active {
-    color: #000
+    color: white;
   }
   
   button:active:after {

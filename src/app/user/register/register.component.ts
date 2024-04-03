@@ -51,7 +51,7 @@ export class RegisterComponent {
         this.router.navigate(['/products']);
       })
       .catch(error => {
-        window.alert(error); // Показване на съобщение за грешка
+        window.alert(error);
       });
   }
 }
