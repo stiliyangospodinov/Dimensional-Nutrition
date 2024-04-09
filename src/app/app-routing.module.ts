@@ -10,6 +10,8 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CommentsComponent } from './comments/comments.component';
+import { AuthGuard } from './user/auth.guard';
+import { GuestAuthGuard } from './user/guest.guard';
 
 const routes: Routes = [
   { path: '',
@@ -21,10 +23,10 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'discount', component: DiscountComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
   { path: '404', component: ErrorComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [GuestAuthGuard] },
   { path: 'comments', component: CommentsComponent },
 
   { path: '**', redirectTo: "/404" },

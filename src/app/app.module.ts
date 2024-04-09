@@ -19,7 +19,7 @@ import { ErrorComponent } from './error/error.component';
 import { ContactComponent } from './contact/contact.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CommentsComponent } from './comments/comments.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user/user.service';
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { UserService } from './user/user.service';
     FirebaseAppModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     provideFirebaseApp(() => initializeApp({"projectId":"dimensional-f4ccd","appId":"1:49173302788:web:8c898b6ae87165f7906f51","storageBucket":"dimensional-f4ccd.appspot.com","apiKey":"AIzaSyBiWN5CnkBy3OqC_grB7nAyU59FJ6iNRb8","authDomain":"dimensional-f4ccd.firebaseapp.com","messagingSenderId":"49173302788"})),
     provideAuth(() => getAuth()),

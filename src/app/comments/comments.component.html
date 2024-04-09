@@ -29,9 +29,13 @@
 				<div class="name"><p>{{username}}</p></div>
 			</div>
 			<div>
-				<form (submit)="addComment($event)" method="post">
-					<textarea name="comment" [(ngModel)]="comment" placeholder="Your comment here."></textarea>
-					<button type="submit" class="comment-submit">Comment</button>
+				<form [formGroup]="commentForm" (submit)="addComment($event)" method="post">
+					<textarea formControlName="comment" placeholder="Your comment here."></textarea>
+					<!-- Изписване на съобщението за задължително поле -->
+					<p *ngIf="commentForm.controls['comment'].invalid && (commentForm.controls['comment'].dirty || commentForm.controls['comment'].touched)">
+					  Comment is required.
+					</p>
+					<button type="submit" class="comment-submit" [disabled]="commentForm.invalid">Comment</button>
 				  </form>
 			</div>
 		</div>
