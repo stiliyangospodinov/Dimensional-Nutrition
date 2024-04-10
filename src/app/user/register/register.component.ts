@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { appEmailValidator } from 'src/app/shared/validators/app-email-validator';
 import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwords-validator';
+import { Observable } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Component({
@@ -47,10 +48,10 @@ export class RegisterComponent {
     console.log('Data to be sent to Firebase Authentication:', userData);
   
     this.userService.register(username, email, tel, password, rePassword)
-      .then(() => {
-        this.router.navigate(['/products']);
-      })
-      .catch(error => {
+      .subscribe(() => {
+        window.alert('Registration Successful');
+        this.router.navigate(['/login']);
+      }, error => {
         window.alert(error);
       });
   }

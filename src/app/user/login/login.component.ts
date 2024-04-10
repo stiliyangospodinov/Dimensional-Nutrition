@@ -1,8 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
 })
 export class LoginComponent {
   appEmailDomains = DEFAULT_EMAIL_DOMAINS;
+  errorMessage: string | undefined;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -27,6 +29,7 @@ export class LoginComponent {
       })
       .catch((error) => {
         console.error('Login failed:', error);
+        this.errorMessage = 'Incorrect email or password.';
       });
   }
 }

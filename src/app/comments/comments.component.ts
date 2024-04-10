@@ -4,8 +4,7 @@ import { ApiService } from '../api.service';
 import { Comment } from '../types/comment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-comments',
@@ -48,6 +47,9 @@ export class CommentsComponent implements OnInit {
         catchError(error => {
           console.error('Error loading comments:', error);
           return [];
+        }),
+        map((data: Comment[]) => {
+          return data;
         })
       )
       .subscribe((data: Comment[]) => {

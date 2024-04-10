@@ -12,10 +12,10 @@ import { Comment } from './types/comment';
 export class ApiService {
   constructor(private firestore: AngularFirestore) {}
 
-  getData() {
+  getData(): Observable<Product[]> {
     return this.firestore
-    .collection<Product>("products ")
-    .valueChanges();
+      .collection<Product>("products ")
+      .valueChanges();
   }
   getDiscountUser(): Observable<Discount | undefined> {
     return this.firestore.doc<Discount>(`discount/disc`).valueChanges();
@@ -23,10 +23,10 @@ export class ApiService {
   getDiscountGuest(): Observable<Discount | undefined> {
     return this.firestore.doc<Discount>(`discount/disc_guest`).valueChanges();
   }
-  getComments() {
+  getComments(): Observable<Comment[]> {
     return this.firestore
-    .collection<Comment>("comments")
-    .valueChanges();
+      .collection<Comment>("comments")
+      .valueChanges();
   }
   postComment(comment: Comment): Observable<string> {
     const commentsCollection = this.firestore.collection<Comment>('comments');

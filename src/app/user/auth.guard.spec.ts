@@ -1,17 +1,28 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthGuard } from './auth.guard';
+import { UserService } from './user.service';
+import { of } from 'rxjs';
 
-import { authGuard } from './auth.guard';
-
-describe('authGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => authGuard(...guardParameters));
+describe('AuthGuard', () => {
+  let guard: AuthGuard;
+  let userServiceStub: Partial<UserService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    userServiceStub = {
+      user$: of(undefined) // Мокване на user$ observable с помощта на RxJS of оператор
+    };
+
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: UserService, useValue: userServiceStub },
+        Router
+      ]
+    });
+    guard = TestBed.inject(AuthGuard);
   });
 
   it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
+    expect(guard).toBeTruthy();
   });
 });

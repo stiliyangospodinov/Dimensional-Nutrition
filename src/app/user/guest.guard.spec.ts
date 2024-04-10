@@ -1,17 +1,28 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { Router } from '@angular/router';
+import { GuestAuthGuard } from './guest.guard'; // Промени guest-guard на guest-auth.guard
+import { UserService } from './user.service';
+import { of } from 'rxjs';
 
-import { guestGuard } from './guest.guard';
-
-describe('guestGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => guestGuard(...guardParameters));
+describe('GuestAuthGuard', () => { // Промени guestGuard на GuestAuthGuard
+  let guard: GuestAuthGuard; // Промени guestGuard на GuestAuthGuard
+  let userServiceStub: Partial<UserService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    userServiceStub = {
+      user$: of(undefined) // Мокване на user$ observable с помощта на RxJS of оператор
+    };
+
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: UserService, useValue: userServiceStub },
+        Router
+      ]
+    });
+    guard = TestBed.inject(GuestAuthGuard); // Промени guestGuard на GuestAuthGuard
   });
 
   it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
+    expect(guard).toBeTruthy();
   });
 });

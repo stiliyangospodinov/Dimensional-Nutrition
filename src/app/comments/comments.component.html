@@ -31,7 +31,6 @@
 			<div>
 				<form [formGroup]="commentForm" (submit)="addComment($event)" method="post">
 					<textarea formControlName="comment" placeholder="Your comment here."></textarea>
-					<!-- Изписване на съобщението за задължително поле -->
 					<p *ngIf="commentForm.controls['comment'].invalid && (commentForm.controls['comment'].dirty || commentForm.controls['comment'].touched)">
 					  Comment is required.
 					</p>
