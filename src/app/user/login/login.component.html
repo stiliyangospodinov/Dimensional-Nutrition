@@ -44,7 +44,7 @@
                 <p class="error" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
                 <p class="error" *ngIf="inputPassword.errors?.['minlength']">Password must be at least {{inputPassword.errors?.['minlength']['requiredLength']}} characters!</p>
             </ng-container>
-				<button type="submit" class="btn">Login</button>
+            <button [disabled]="form.invalid" class="btn">Login</button>
 				<div class="signup-link">
 				  <button class="btn" routerLink="/register">Sign up</button>
 				</div>

@@ -1,0 +1,30 @@
+<main>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
+<div *ngIf="product" class="card">
+    <div class="poster"><img src={{product.img}} alt="Location Unknown"></div>
+  <div class="details">
+      <h1>{{product.name}}</h1>
+      <h2>{{product.posted}}</h2>
+      <div class="rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <span>{{product.rating}}</span>
+    </div>
+
+      <div class="tags">
+          <span class="tag">{{product.tag1}}</span>
+          <span class="tag">{{product.tag2}}</span>
+          <span class="tag">{{product.tag3}}</span>
+      </div>
+      <h2>Description:</h2>
+      <p class="desc" *ngIf="product.description">{{ product.description }}</p>
+      <h2>Price: {{product.price}}</h2>
+      <div *ngIf="isLogged" class="like-btn">
+        <app-like-btn></app-like-btn>
+      </div>
+  </div>
+</div>
+</main>

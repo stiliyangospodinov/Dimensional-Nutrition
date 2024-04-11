@@ -134,8 +134,7 @@
   .comment-box {
     margin-top: 20px;
   }
-  
-  
+
   @media screen and(max-width:660px) {
     .comment-session{width: 100%;}
   }

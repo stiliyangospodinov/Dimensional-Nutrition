@@ -12,6 +12,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { CommentsComponent } from './comments/comments.component';
 import { AuthGuard } from './user/auth.guard';
 import { GuestAuthGuard } from './user/guest.guard';
+import { SingleProductComponent } from './single-product/single-product.component';
 
 const routes: Routes = [
   { path: '',
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: '404', component: ErrorComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [GuestAuthGuard] },
   { path: 'comments', component: CommentsComponent },
+  { path: 'product/:name', component: SingleProductComponent },
 
   { path: '**', redirectTo: "/404" },
 ];

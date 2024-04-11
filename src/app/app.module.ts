@@ -21,6 +21,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { CommentsComponent } from './comments/comments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user/user.service';
+import { SingleProductComponent } from './single-product/single-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { UserService } from './user/user.service';
     ContactComponent,
     DiscountComponent,
     CommentsComponent,
+    SingleProductComponent,
   ],
   imports: [
     BrowserModule,

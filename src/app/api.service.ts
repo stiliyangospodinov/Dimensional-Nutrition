@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { Product } from './types/products';
 import { User } from './types/user';
-import { Observable, catchError, from, map, throwError } from 'rxjs';
+import { Observable, catchError, filter, from, map, throwError } from 'rxjs';
 import { Discount } from './types/discount';
 import { Comment } from './types/comment';
 
@@ -16,6 +16,20 @@ export class ApiService {
     return this.firestore
       .collection<Product>("products ")
       .valueChanges();
+  }
+  getProductByName(productName: string): Observable<Product> {
+    return this.firestore
+      .collection<Product>('products ', ref => ref.where('name', '==', productName))
+      .valueChanges()
+      .pipe(
+        map((products: Product[]) => {
+          if (products.length > 0) {
+            return products[0];
+          } else {
+            throw new Error('Product not found');
+          }
+        })
+      );
   }
   getDiscountUser(): Observable<Discount | undefined> {
     return this.firestore.doc<Discount>(`discount/disc`).valueChanges();
