@@ -1,29 +1,75 @@
-# Myproject
+Dimensional Nutrition
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+Dimensional Nutrition е Angular базирано приложение за хранителни добавки, което използва Firebase за съхранение и извличане на данни. Приложението предоставя различни функционалности в зависимост от типа на потребителите: публични и регистрирани.
+Съдържание
 
-## Development server
+    Описание
+    Функционалности
+    Технологии
+    Настройка на проекта
+    Използване
+    Разработчици
+    Лиценз
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Описание
 
-## Code scaffolding
+Проектът Dimensional Nutrition е уеб приложение за разглеждане на хранителни добавки и техните характеристики. Данните за продуктите се извличат от специална база данни, хоствана във Firebase. Приложението е изградено с Angular и предоставя различни функционалности за публични и регистрирани потребители.
+Функционалности
+Публична част:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    Публичните потребители могат да разглеждат продуктите в сайта.
+    Публичните потребители имат ограничен достъп:
+        Не могат да пишат коментари.
+        Не могат да харесват продукти.
 
-## Build
+Потребителска част (за регистрирани потребители):
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    Регистрираните потребители имат разширени функционалности:
+        Могат да пишат четат и изтриват коментарите си.
+        Могат да харесват продуктите.
 
-## Running unit tests
+Технологии
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Проектът използва следните технологии:
 
-## Running end-to-end tests
+    Angular - Основната JavaScript рамка за изграждане на уеб приложението.
+    Firebase - За съхранение и извличане на данни (back-end).
+    HTML5, CSS3, TypeScript - За фронт-енд разработката.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Настройка на проекта
 
-## Further help
+    Клонирайте репозитория:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    bash
 
+git clone https://github.com/потребител/DimensionalNutrition.git
 
+Отидете в директорията на проекта:
+
+cd DimensionalNutrition
+
+Инсталирайте зависимостите:
+
+npm install
+
+Стартирайте приложението:
+
+ng serve
+
+Отворете приложението в браузър на адрес:
+
+    http://localhost:4200
+
+Използване
+
+След стартиране на приложението, можете да се регистрирате или да влезете като потребител, за да използвате пълния набор от функционалности. Публичните потребители имат достъп само до информацията за продуктите, но не могат да взаимодействат с тях (харесвания, коментари).
+Функционалности за регистрирани потребители:
+
+    Добавяне и итриване на коментари.
+    Харесване на продукти и взаимодействие с други потребители.
+
+Разработчици
+
+Проектът е разработен от:
+
+    Стилиян Господинов
