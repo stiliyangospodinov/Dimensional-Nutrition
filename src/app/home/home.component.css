@@ -9,7 +9,7 @@ body {
 }
 
 .hero-section {
- margin-top: 16%;
+ margin-top: 15%;
  margin-left: 10%;
  justify-content: center;  
 }
@@ -90,7 +90,7 @@ opacity: 0.8;
 }
 .glow-on-hover {
   width: 160px;
-  height: 50px;
+  height: 35px;
   border: none;
   outline: none;
 
