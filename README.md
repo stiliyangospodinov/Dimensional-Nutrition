@@ -1,75 +1,84 @@
 Dimensional Nutrition
 
-Dimensional Nutrition е Angular базирано приложение за хранителни добавки, което използва Firebase за съхранение и извличане на данни. Приложението предоставя различни функционалности в зависимост от типа на потребителите: публични и регистрирани.
-Съдържание
+Dimensional Nutrition is an Angular-based application for dietary supplements that uses Firebase for data storage and retrieval. The app provides different functionalities depending on the user type: public and registered users.
+Table of Contents
 
-    Описание
-    Функционалности
-    Технологии
-    Настройка на проекта
-    Използване
-    Разработчици
-    Лиценз
+    Description
+    Features
+    Technologies
+    Project Setup
+    Usage
+    Developers
+    License
 
-Описание
+Description
 
-Проектът Dimensional Nutrition е уеб приложение за разглеждане на хранителни добавки и техните характеристики. Данните за продуктите се извличат от специална база данни, хоствана във Firebase. Приложението е изградено с Angular и предоставя различни функционалности за публични и регистрирани потребители.
-Функционалности
-Публична част:
+Dimensional Nutrition is a web application for browsing nutritional supplements and their details. Product data is retrieved from a dedicated Firebase-hosted database. The application is built with Angular and offers various features for both public and registered users.
+Features
+Public Section:
 
-    Публичните потребители могат да разглеждат продуктите в сайта.
-    Публичните потребители имат ограничен достъп:
-        Не могат да пишат коментари.
-        Не могат да харесват продукти.
+    Public users can browse the products listed on the site.
+    Public users have limited access:
+        They cannot post comments.
+        They cannot like products.
 
-Потребителска част (за регистрирани потребители):
+User Section (for registered users):
 
-    Регистрираните потребители имат разширени функционалности:
-        Могат да пишат четат и изтриват коментарите си.
-        Могат да харесват продуктите.
+    Registered users have extended functionalities:
+        They can post, read, and delete their own comments.
+        They can like products.
 
-Технологии
+Technologies
 
-Проектът използва следните технологии:
+The project uses the following technologies:
 
-    Angular - Основната JavaScript рамка за изграждане на уеб приложението.
-    Firebase - За съхранение и извличане на данни (back-end).
-    HTML5, CSS3, TypeScript - За фронт-енд разработката.
+    Angular – The main JavaScript framework for building the web application.
+    Firebase – Used for data storage and retrieval (back-end).
+    HTML5, CSS3, TypeScript – For front-end development.
 
-Настройка на проекта
+Project Setup
 
-    Клонирайте репозитория:
+    Clone the repository:
 
     bash
 
-git clone https://github.com/потребител/DimensionalNutrition.git
+git clone https://github.com/your-username/DimensionalNutrition.git
 
-Отидете в директорията на проекта:
+Navigate to the project directory:
+
+bash
 
 cd DimensionalNutrition
 
-Инсталирайте зависимостите:
+Install the dependencies:
+
+bash
 
 npm install
 
-Стартирайте приложението:
+Start the application:
+
+bash
 
 ng serve
 
-Отворете приложението в браузър на адрес:
+Open the application in a browser at:
+
+bash
 
     http://localhost:4200
 
-Използване
+Usage
 
-След стартиране на приложението, можете да се регистрирате или да влезете като потребител, за да използвате пълния набор от функционалности. Публичните потребители имат достъп само до информацията за продуктите, но не могат да взаимодействат с тях (харесвания, коментари).
-Функционалности за регистрирани потребители:
+Once the application is running, you can register or log in as a user to access the full feature set. Public users can only view product information but cannot interact with the products (likes, comments).
+Features for Registered Users:
 
-    Добавяне и итриване на коментари.
-    Харесване на продукти и взаимодействие с други потребители.
+    Add and delete comments.
+    Like products and interact with other users.
 
-Разработчици
+Developers
 
-Проектът е разработен от:
+This project was developed by:
 
-    Стилиян Господинов
+    Stiliyan Gospodinov
+
