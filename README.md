@@ -42,7 +42,7 @@ Project Setup
 
     bash
 
-git clone https://github.com/your-username/DimensionalNutrition.git
+git clone https://github.com/your-username/Dimensional-Nutrition.git
 
 Navigate to the project directory:
 
