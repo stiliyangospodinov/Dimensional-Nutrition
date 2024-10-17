@@ -13,6 +13,7 @@ export class UserService implements OnDestroy {
   public user$ = this.user$$.asObservable();
   user: User | undefined;
   USER_KEY = '[user]'
+  ADMIN_ID = '23Be0yFzRXaXxW8NWWam0dwZ80k1';
   get isLogged(): boolean {
     return !!this.user
   }
@@ -26,7 +27,9 @@ export class UserService implements OnDestroy {
     const userJson = sessionStorage.getItem('user');
     return userJson ? JSON.parse(userJson) : undefined;
   }
-
+  isAdmin(): boolean {
+    return this.user?.id === this.ADMIN_ID; // Проверява дали ID-то на потребителя съвпада с ID-то на администратора
+  }
   async login(email: string, password: string): Promise<void> {
     try {
       const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
@@ -36,6 +39,7 @@ export class UserService implements OnDestroy {
         const userDocSnapshot = await userDoc.get().toPromise();
         if (userDocSnapshot && userDocSnapshot.exists) {
           const userData = userDocSnapshot.data() as User;
+          userData.id = userId; 
           this.user$$.next(userData);
           sessionStorage.setItem('user', JSON.stringify(userData));
         }

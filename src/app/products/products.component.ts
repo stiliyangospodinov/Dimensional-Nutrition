@@ -21,6 +21,10 @@ export class ProductsComponent implements OnInit {
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
+  get isAdmin(): boolean {
+    return this.userService.isAdmin();
+  }
+  
   ngOnInit(): void {
     this.apiService.getData().subscribe(
       (data: Product[]) => {

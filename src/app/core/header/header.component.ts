@@ -17,6 +17,9 @@ export class HeaderComponent {
   get username(): string {
     return this.userService.user?.username || '';
   }
+  get isAdmin(): boolean {
+    return this.userService.isAdmin();
+  }
   
   logout(): void {
     this.userService.logout().subscribe(() => {

@@ -1,0 +1,74 @@
+<body>
+    <div class="container">
+      <div class="product-box">
+        <form class="create-product" [formGroup]="form" (ngSubmit)="editProduct()">
+          <div class="input-box">
+            <input type="text" name="name" id="name" formControlName="name" />
+            <ng-container *ngIf="form.get('name')?.touched">
+              <p class="error" *ngIf="form.get('name')?.errors?.['required']">
+                Product name is required!
+              </p>
+              <p class="error" *ngIf="form.get('name')?.errors?.['minlength']">
+                Name's length should not be less than 3!
+              </p>
+            </ng-container>
+            <label>Product Name</label>
+          </div>
+  
+          <div class="input-box">
+            <input type="text" name="img" id="img" formControlName="img" />
+            <label>Image URL</label>
+          </div>
+  
+          <div class="input-box">
+            <input type="number" name="price" id="price" formControlName="price" />
+            <ng-container *ngIf="form.get('price')?.touched">
+              <p class="error" *ngIf="form.get('price')?.errors?.['required']">
+                Price is required!
+              </p>
+              <p class="error" *ngIf="form.get('price')?.errors?.['min']">
+                Price must be a positive number!
+              </p>
+            </ng-container>
+            <label>Price</label>
+          </div>
+  
+          <div class="input-box">
+            <input type="text" name="tag1" id="tag1" formControlName="tag1" />
+            <label>Tag 1</label>
+          </div>
+  
+          <div class="input-box">
+            <input type="text" name="tag2" id="tag2" formControlName="tag2" />
+            <label>Tag 2</label>
+          </div>
+  
+          <div class="input-box">
+            <input type="text" name="tag3" id="tag3" formControlName="tag3" />
+            <label>Tag 3</label>
+          </div>
+  
+          <div class="input-box">
+            <textarea name="description" id="description" formControlName="description"></textarea>
+            <label>Description</label>
+          </div>
+  
+          <div class="input-box">
+            <input type="number" name="rating" id="rating" formControlName="rating" min="0" max="5" />
+            <ng-container *ngIf="form.get('rating')?.touched">
+              <p class="error" *ngIf="form.get('rating')?.errors?.['required']">
+                Rating is required!
+              </p>
+              <p class="error" *ngIf="form.get('rating')?.errors?.['min']">
+                Rating must be between 0 and 5!
+              </p>
+            </ng-container>
+            <label>Rating</label>
+          </div>
+  
+          <button [disabled]="form.invalid" class="btn">Edit Product</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  

@@ -22,8 +22,12 @@
       <h2>Description:</h2>
       <p class="desc" *ngIf="product.description">{{ product.description }}</p>
       <h2>Price: {{product.price}}</h2>
-      <div *ngIf="isLogged" class="like-btn">
+      <div *ngIf="isLogged && !isAdmin" class="like-btn">
         <app-like-btn></app-like-btn>
+      </div>
+      <div *ngIf="isLogged && isAdmin" class="edit-delete">
+        <button class="edit-btn" [routerLink]="['/edit', product.name]">Edit</button>
+        <button class="delete-btn" (click)="deleteProduct()">Delete</button>
       </div>
   </div>
 </div>

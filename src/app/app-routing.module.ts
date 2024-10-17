@@ -13,6 +13,8 @@ import { CommentsComponent } from './comments/comments.component';
 import { AuthGuard } from './user/auth.guard';
 import { GuestAuthGuard } from './user/guest.guard';
 import { SingleProductComponent } from './single-product/single-product.component';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 const routes: Routes = [
   { path: '',
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [GuestAuthGuard] },
   { path: 'comments', component: CommentsComponent },
   { path: 'product/:name', component: SingleProductComponent },
+  { path: 'create', component: CreateProductComponent },
+  { path: 'edit/:name', component: EditProductComponent },
 
   { path: '**', redirectTo: "/404" },
 ];

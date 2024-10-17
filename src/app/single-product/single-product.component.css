@@ -189,4 +189,42 @@ h1{
     width: 100%;
     height: 100%;
 }
-
+.edit-btn, .delete-btn {
+    border: 2px solid #8a8a8a;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 0.7em;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3rem;
+    color: #8a8a8a;
+    transition: all ease 0.4s;
+  }
+  
+  .edit-btn, .delete-btn,span {
+    border-color: #cc4b37; /* променете цвета на границата на бутона при активация на класа "liked" */
+  }
+  
+  .edit-btn, .delete-btn .fa,
+  .edit-btn, .delete-btn span {
+    transition: all ease 0.4s;
+  }
+  
+  .edit-btn, .delete-btn .fa {
+    color: #8a8a8a;
+  }
+  
+  .edit-btn, .delete-btn span {
+    color: #8a8a8a;
+    margin: 1em;
+  }
+  
+  .edit-btn, .delete-btn ,.fa {
+    color: #cc4b37;
+  }
+  
+  .edit-btn span, .delete-btn span {
+    color: #cc4b37; 
+  }

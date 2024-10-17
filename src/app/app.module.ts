@@ -22,6 +22,8 @@ import { CommentsComponent } from './comments/comments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user/user.service';
 import { SingleProductComponent } from './single-product/single-product.component';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,8 @@ import { SingleProductComponent } from './single-product/single-product.componen
     DiscountComponent,
     CommentsComponent,
     SingleProductComponent,
+    CreateProductComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

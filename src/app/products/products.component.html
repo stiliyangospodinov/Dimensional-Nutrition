@@ -31,11 +31,11 @@
                   <span class="tag">{{product.tag3}}</span>
               </div>
               <h2>Description:</h2>
-              <p class="desc" *ngIf="!showFullDescription">{{ product.description | slice: 30 }}<span *ngIf="product.description.length > 60">...</span></p>
-              <button class="view-more" [routerLink]="['/product', product.name]" *ngIf="product.description.length > 60">{{ showFullDescription ? 'Show Less' : 'Show More' }}</button>
+              <p class="desc" >{{ product.description | slice: 30 }}<span >...</span></p>
+              <button class="view-more" [routerLink]="['/product', product.name]" >{{ showFullDescription ? 'Show Less' : 'Show More' }}</button>
               <p class="full-desc" *ngIf="showFullDescription">{{ product.description }}</p>
-              <h2>Price: {{product.price}}</h2>
-              <div *ngIf="isLogged" class="like-btn">
+              <h2>Price: {{product.price}} lv</h2>
+              <div *ngIf="isLogged && !isAdmin" class="like-btn">
               <app-like-btn></app-like-btn>
             </div>
           </div>
