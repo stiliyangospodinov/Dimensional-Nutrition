@@ -27,13 +27,13 @@ User Section (for registered users):
     Registered users have extended functionalities:
         They can post, read, and delete their own comments.
         They can like products.
-        Admin Section (for administrators):
+Admin Section (for administrators):
 
-Admin users have full control over the products listed on the site:
-    Access to an additional "Create Product" menu item in the header.
-    They can create new products by filling out a form with details like name, image, price, tags, description, and rating.
-    They can edit existing products, changing their details as needed.
-    They can delete products from the database, which removes them from the site entirely.
+    Admin users have full control over the products listed on the site:
+        Access to an additional "Create Product" menu item in the header.
+        They can create new products by filling out a form with details like name, image, price, tags, description, and rating.
+        They can edit existing products, changing their details as needed.
+        They can delete products from the database, which removes them from the site entirely.
     
     username:admin@abv.bg
     password:admin1
