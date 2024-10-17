@@ -21,7 +21,7 @@
       </div>
       <h2>Description:</h2>
       <p class="desc" *ngIf="product.description">{{ product.description }}</p>
-      <h2>Price: {{product.price}}</h2>
+      <h2>Price: {{product.price}} lv</h2>
       <div *ngIf="isLogged && !isAdmin" class="like-btn">
         <app-like-btn></app-like-btn>
       </div>
