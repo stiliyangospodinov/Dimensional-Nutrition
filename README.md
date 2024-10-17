@@ -27,6 +27,10 @@ User Section (for registered users):
     Registered users have extended functionalities:
         They can post, read, and delete their own comments.
         They can like products.
+        They have access to their Profile Page, where they can:
+            View and update their profile details.
+            Save changes securely.
+            
 Admin Section (for administrators):
 
     Admin users have full control over the products listed on the site:
