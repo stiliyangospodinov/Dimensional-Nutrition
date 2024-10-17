@@ -3,7 +3,6 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',

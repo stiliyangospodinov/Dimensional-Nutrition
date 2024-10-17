@@ -38,14 +38,13 @@ export class SingleProductComponent implements OnInit {
   }
   deleteProduct(): void {
     if (this.product && this.product.name) {
-      // Показване на потвърждаващ диалог
       const confirmDelete = confirm('Are you sure you want to delete this product?');
   
       if (confirmDelete) {
         this.apiService.deleteProduct(this.product.name).subscribe(
           () => {
             console.log('Product deleted successfully');
-            this.router.navigate(['/products']); // Пренасочване към страницата с продукти
+            this.router.navigate(['/products']); 
           },
           error => {
             console.error('Error deleting product:', error);

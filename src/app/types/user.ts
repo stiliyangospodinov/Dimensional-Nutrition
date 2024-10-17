@@ -1,5 +1,5 @@
 export interface User {
-  id?: string; // Опционален идентификатор на потребителя
+  id?: string;
   email: string;
   tel: string;
   username: string;

@@ -16,8 +16,7 @@ export class AuthGuard implements CanActivate {
       map(user => {
         const isLoggedIn = !!user;
         if (isLoggedIn) {
-          // Redirect logged-in users away from login and register pages
-          this.router.navigate(['/404']); // Пренасочване към профила за вече влезли потребители
+          this.router.navigate(['/']); 
         }
         return !isLoggedIn;
       })

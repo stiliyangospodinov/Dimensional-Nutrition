@@ -15,13 +15,14 @@ import { GuestAuthGuard } from './user/guest.guard';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { AdminGuard } from './user/admin.guard';
 
 const routes: Routes = [
   { path: '',
     pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/'
   },
-  { path: 'home', component: HomeComponent,},
+  { path: '', component: HomeComponent,},
   { path: 'products', component: ProductsComponent},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
@@ -32,8 +33,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [GuestAuthGuard] },
   { path: 'comments', component: CommentsComponent },
   { path: 'product/:name', component: SingleProductComponent },
-  { path: 'create', component: CreateProductComponent },
-  { path: 'edit/:name', component: EditProductComponent },
+  { path: 'create', component: CreateProductComponent, canActivate: [AdminGuard]},
+  { path: 'edit/:name', component: EditProductComponent,canActivate: [AdminGuard] },
 
   { path: '**', redirectTo: "/404" },
 ];

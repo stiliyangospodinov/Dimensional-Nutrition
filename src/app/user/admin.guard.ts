@@ -7,18 +7,19 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class GuestAuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(private userService: UserService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
     return this.userService.user$.pipe(
       map(user => {
-        const isLoggedIn = !!user;
-        if (!isLoggedIn) {
+        const isAdmin = !!user && this.userService.isAdmin();
+        if (!isAdmin) {
+          
           this.router.navigate(['/']); 
         }
-        return isLoggedIn;
+        return isAdmin; 
       })
     );
   }

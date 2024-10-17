@@ -13,7 +13,7 @@
   }
   
   .button-like.liked,span {
-    border-color: #cc4b37; /* променете цвета на границата на бутона при активация на класа "liked" */
+    border-color: #cc4b37; 
   }
   
   .button-like .fa,

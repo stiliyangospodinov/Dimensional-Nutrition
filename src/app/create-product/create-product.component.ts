@@ -37,9 +37,9 @@ export class CreateProductComponent {
 
     const productData = {
       ...this.form.value,
-      posted: formattedDate  // Времето на публикуване с формат
+      posted: formattedDate 
     };
-    // Запис в базата Firestore
+
     this.firestore.collection('products ').add(productData)
       .then(() => {
         alert('Product created successfully!');
