@@ -108,23 +108,10 @@ a img {
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center align items */
     }
-
-
-
-    .menu-toggle {
-        display: block; /* Show menu toggle button */
-        margin-top: 10px; /* Space above menu toggle button */
-        width: 100%; /* Full width for better touch area */
-        text-align: center; /* Center align the button text */
-    }
-
-    .menu {
-        display: none; /* Hide menu by default */
-    }
-
-    .menu.active {
-        display: flex; /* Show menu when active */
-    }
+.icon-nav{
+	display: flex;
+	flex-direction: row;
+}
 
 }
 
@@ -132,7 +119,17 @@ a img {
     .button {
         font-size: 14px; /* Smaller font size for buttons */
     }
+    .wrapper {
+        justify-content: space-between;
+        align-items: center;
+    }
+	.icon-nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%; /* Takes full width for icon and menu toggle */
+    }
 
+	
     ul li {
         padding: 10px; /* Reduce padding further for mobile */
     }
@@ -141,7 +138,41 @@ a img {
         width: 40px; /* Smaller logo size for mobile */
         height: 40px; /* Smaller logo size for mobile */
     }
+	.logo {
+		order: 1; /* Logo on the far left */
+    }
+	.menu {
+		display: none; /* Hide menu by default */
+	}
+
+	
+    .menu-toggle {
+        display: block;
+		order: 2; /* Show menu toggle button */
+        margin-top: 10px; /* Space above menu toggle button */
+        width: 100%; /* Full width for better touch area */
+        text-align: right; /* Center align the button text */
+    }
+	.menu.active {
+        display: flex; /* Show menu when active */
+    }
+
 	.menu.active>ul{
 		flex-direction: column;
 	}
 }
+
+
+
+
+
+
+    /* .menu-toggle { */
+        /* display: block; Show the toggle button on mobile */
+        /* order: 2; Menu toggle on the far right */
+        /* margin-top: 10px; */
+        /* width: auto; */
+        /* font-size: 24px; */
+        /* Align to the right */
+    /* } */
+

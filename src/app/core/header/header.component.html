@@ -1,5 +1,6 @@
 <header>
   <div class="wrapper p3">
+    <div class="icon-nav">
       <div class="logo">
           <a routerLink="/">
               <img src="/assets/logo.jpg" alt="Logo">
@@ -8,6 +9,7 @@
       <button class="menu-toggle" (click)="toggleMenu()" *ngIf="isMenuVisible">
           ☰ <!-- Hamburger Icon -->
       </button>
+    </div>
       <div class="menu" [class.active]="menuOpen">
           <ul>
               <li><a class="button" routerLink="/">Home</a></li>
@@ -20,7 +22,8 @@
               <li><a class="button" routerLink="/comments">Comments</a></li>
               <li><a class="button" routerLink="/contact">Contact</a></li>
           </ul>
-      </div>
+        </div>
+
       <div class="log-reg-nav">
           <ul *ngIf="!isLoggedIn">
               <li><a class="button" routerLink="/login">Login</a></li>
