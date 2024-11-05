@@ -176,6 +176,9 @@ svg text {
 	}
 }
 @media (max-width: 1024px) {
+	body{
+		margin: 0 auto;
+	}
 	.hero-section {
 	  margin-top: 20%;
 	  margin-left: auto;

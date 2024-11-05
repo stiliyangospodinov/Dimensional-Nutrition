@@ -1,103 +1,89 @@
-
 header {
-	z-index: 9999;
-	background: rgb(243, 243, 243);
-  	background: linear-gradient(90deg, rgba(206,206,215,1) 0%, rgb(255, 255, 255) 47%, rgb(210, 212, 213) 100%);
-	width:100%;
+    z-index: 9999;
+    background: rgb(243, 243, 243);
+    background: linear-gradient(90deg, rgba(206, 206, 215, 1) 0%, rgb(255, 255, 255) 47%, rgb(210, 212, 213) 100%);
+    width: 100%;
 }
 
-.wrapper, .menu>ul, .log-reg-nav>ul{
-	display: flex;
-	justify-content: space-between;
-
+.wrapper, .menu > ul, .log-reg-nav > ul {
+    display: flex;
+    justify-content: space-between;
 }
-nav{
-	display: flex;
-	justify-content: space-between;
+
+nav {
+    display: flex;
+    justify-content: space-between;
 }
 
 ul li {
-	padding:20px
-}
-.menu ul{
-	margin-left:140px;
+    padding: 20px;
 }
 
-
-
-a img{
-	margin-top:0.4em;
-	margin-left: 1em;
-	width: 50px;
-	height:50px;
-	border-radius: 50%;
-	align-items: center;
+.menu ul {
+    margin-left: 140px;
 }
 
+a img {
+    margin-top: 0.4em;
+    margin-left: 1em;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+}
 
-.button{
-	border: none;
-	outline: none;
-	color: grey;
-	font-size:16px;
-	cursor: pointer;
-	position: relative;
-	z-index: 0;
-	border-radius: 10px;
-  }
-  
-  .button:before {
-
-	content: '';
-	transform: scaleX(1);
-	position: absolute;
-	top: 2px;
-	left:-2px;
-	background-size: 400%;
-	z-index: -1;
-	filter: blur(5px);
-	width: calc(100% + 4px);
-	height: calc(100% + 4px);
-	animation: glowing 20s linear infinite;
-	opacity: 0;
-	transition: opacity .3s ease-in-out;
-	border-radius: 10px;
-  }
-  
-  .button:active {
-	color: lightskyblue
-  }
-  
-  .button:active:after {
-	background: transparent;
-  }
-  
-  .button:hover:before {
-	opacity: 1;
-  }
-  
-  .button:after {
-	z-index: -1;
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	opacity: 0.3;
-	left: 0;
-	top: 0;
-	border-radius: 10px;
-  
-  }
-	
-  .menu-toggle {
-    display: none; /* Hide menu toggle button by default */
-    background: transparent;
+.button {
     border: none;
-    font-size: 24px; /* Hamburger icon size */
+    outline: none;
+    color: grey;
+    font-size: 16px;
     cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
 }
 
-/* Menu Styles */
+.button:before {
+    content: '';
+    transform: scaleX(1);
+    position: absolute;
+    top: 2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.button:active {
+    color: lightskyblue;
+}
+
+.button:active:after {
+    background: transparent;
+}
+
+.button:hover:before {
+    opacity: 1;
+}
+
+.button:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
 .menu-toggle {
     display: none; /* Hide menu toggle button by default */
     background: transparent;
@@ -107,10 +93,7 @@ a img{
 }
 
 /* Menu Styles */
-.menu {
-    display: flex; /* Default horizontal layout */
-    flex-direction: row; /* Stack items horizontally */
-}
+
 
 .menu ul {
     list-style: none;
@@ -118,36 +101,31 @@ a img{
     margin: 0;
 }
 
-.menu.active {
-    display: flex; /* Show menu when active */
-    flex-direction: column; /* Stack menu items vertically */
-    width: 100%; /* Full width for the menu */
-    position: absolute; /* Position it below the toggle button */
-    background-color: white; /* Background color to cover contents below */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-    z-index: 1000; /* Ensure it appears above other content */
-    top: 60px; /* Adjust based on your header height */
-}
 
 /* Media Queries for Responsive Design */
 @media (max-width: 1024px) {
+    .wrapper {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+    }
+
+
+
+    .menu-toggle {
+        display: block; /* Show menu toggle button */
+        margin-top: 10px; /* Space above menu toggle button */
+        width: 100%; /* Full width for better touch area */
+        text-align: center; /* Center align the button text */
+    }
+
     .menu {
-        display: none; /* Hide menu by default on smaller screens */
+        display: none; /* Hide menu by default */
     }
 
     .menu.active {
         display: flex; /* Show menu when active */
     }
 
-    .menu-toggle {
-        display: block; /* Show menu toggle button */
-    }
-
-    /* Other styles for smaller screens */
-    .wrapper {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center align items */
-    }
 }
 
 @media (max-width: 767px) {
@@ -163,4 +141,7 @@ a img{
         width: 40px; /* Smaller logo size for mobile */
         height: 40px; /* Smaller logo size for mobile */
     }
+	.menu.active>ul{
+		flex-direction: column;
+	}
 }
