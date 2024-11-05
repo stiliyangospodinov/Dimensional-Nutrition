@@ -1,35 +1,39 @@
 <header>
-      <div class="wrapper p3">
-            <div class="logo"><a routerLink="/home"><img src="/assets/logo.jpg" alt=""></a></div>
-              <div class="menu">
-              <ul>
-                <li><a class="button" routerLink="/">Home</a></li>
-                <li><a class="button" routerLink="/products">Products</a></li>
-                <li *ngIf="isLoggedIn && isAdmin">
+  <div class="wrapper p3">
+      <div class="logo">
+          <a routerLink="/">
+              <img src="/assets/logo.jpg" alt="Logo">
+          </a>
+      </div>
+      <button class="menu-toggle" (click)="toggleMenu()" *ngIf="isMenuVisible">
+          ☰ <!-- Hamburger Icon -->
+      </button>
+      <div class="menu" [class.active]="menuOpen">
+          <ul>
+              <li><a class="button" routerLink="/">Home</a></li>
+              <li><a class="button" routerLink="/products">Products</a></li>
+              <li *ngIf="isLoggedIn && isAdmin">
                   <a class="button" routerLink="/create">Create product</a>
-                </li>
-                <li><a class="button" routerLink="/discount">Discount</a></li>
-                <li><a class="button" routerLink="/about">About</a></li>
-                <li><a class="button" routerLink="/comments">Comments</a></li>
-                <li><a class="button" routerLink="/contact">Contact</a></li>
-              </ul>
-            </div>
-              <div class="log-reg-nav">
-                <ul  *ngIf="!isLoggedIn">
-                <li><a class="button" routerLink="/login">Login</a></li>
-                <li><a class="button" routerLink="/register">Register</a></li>
-            </ul>
-            <ul *ngIf="isLoggedIn">
+              </li>
+              <li><a class="button" routerLink="/discount">Discount</a></li>
+              <li><a class="button" routerLink="/about">About</a></li>
+              <li><a class="button" routerLink="/comments">Comments</a></li>
+              <li><a class="button" routerLink="/contact">Contact</a></li>
+          </ul>
+      </div>
+      <div class="log-reg-nav">
+          <ul *ngIf="!isLoggedIn">
+              <li><a class="button" routerLink="/login">Login</a></li>
+              <li><a class="button" routerLink="/register">Register</a></li>
+          </ul>
+          <ul *ngIf="isLoggedIn">
               <li>
-                <a class="button" routerLink="/profile">{{ username }}'s profile</a>
+                  <a class="button" routerLink="/profile">{{ username }}'s profile</a>
               </li>
-            <li>
-              <a class="button" (click)="logout()">Logout</a>
+              <li>
+                  <a class="button" (click)="logout()">Logout</a>
               </li>
-            </ul>
-              </div>
-          </div>
-  </header>
-  
-
-
+          </ul>
+      </div>
+  </div>
+</header>

@@ -89,4 +89,78 @@ a img{
   
   }
 	
+  .menu-toggle {
+    display: none; /* Hide menu toggle button by default */
+    background: transparent;
+    border: none;
+    font-size: 24px; /* Hamburger icon size */
+    cursor: pointer;
+}
 
+/* Menu Styles */
+.menu-toggle {
+    display: none; /* Hide menu toggle button by default */
+    background: transparent;
+    border: none;
+    font-size: 24px; /* Hamburger icon size */
+    cursor: pointer;
+}
+
+/* Menu Styles */
+.menu {
+    display: flex; /* Default horizontal layout */
+    flex-direction: row; /* Stack items horizontally */
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu.active {
+    display: flex; /* Show menu when active */
+    flex-direction: column; /* Stack menu items vertically */
+    width: 100%; /* Full width for the menu */
+    position: absolute; /* Position it below the toggle button */
+    background-color: white; /* Background color to cover contents below */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    z-index: 1000; /* Ensure it appears above other content */
+    top: 60px; /* Adjust based on your header height */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+    .menu {
+        display: none; /* Hide menu by default on smaller screens */
+    }
+
+    .menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle button */
+    }
+
+    /* Other styles for smaller screens */
+    .wrapper {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+    }
+}
+
+@media (max-width: 767px) {
+    .button {
+        font-size: 14px; /* Smaller font size for buttons */
+    }
+
+    ul li {
+        padding: 10px; /* Reduce padding further for mobile */
+    }
+
+    a img {
+        width: 40px; /* Smaller logo size for mobile */
+        height: 40px; /* Smaller logo size for mobile */
+    }
+}

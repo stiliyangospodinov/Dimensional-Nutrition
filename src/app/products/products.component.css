@@ -189,3 +189,21 @@ h1{
     color:white;
     border-radius: 5px;
 }
+@media (max-width: 1024px) {
+    .wrapper {
+        flex-direction: column; /* Променя подреждането на елементите на вертикално */
+
+    }
+
+    .card {
+        width: 90%; /* Ширината на картите се увеличава на 90% */
+        margin-bottom: 20px; /* Добавя разстояние между картите */
+    }
+}
+
+@media (max-width: 767px) {
+    .card {
+        width: 95%; /* Картите да заемат 95% от ширината на екрана */
+
+    }
+}

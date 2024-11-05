@@ -81,3 +81,46 @@ img {
 embed {
 	vertical-align:top;
 }
+@media (max-width: 1024px) {
+    body {
+        min-width: auto; /* Remove min-width for smaller screens */
+    }
+
+    .main {
+        width: 90%; /* Use a percentage width for flexibility */
+        margin: 0 auto; /* Center align */
+    }
+
+    .ic {
+        width: 100%; /* Full width for .ic on smaller screens */
+        margin: 0; /* Reset margins */
+    }
+
+    /* Adjust font sizes, line heights, etc., if needed */
+    body {
+        font-size: 12px; /* Slightly smaller font size */
+        line-height: 22px; /* Adjust line height */
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 11px; /* Further reduce font size for mobile */
+        line-height: 20px; /* Further reduce line height */
+    }
+
+    .main {
+        width: 100%; /* Full width on mobile */
+        padding: 0 10px; /* Add some padding for mobile */
+    }
+
+    .ic {
+        width: 100%; /* Keep .ic full width */
+        margin: 0; /* Reset margins */
+    }
+
+    /* Adjust any other specific styles for mobile */
+    a {
+        font-size: 12px; /* Ensure links are readable */
+    }
+}
