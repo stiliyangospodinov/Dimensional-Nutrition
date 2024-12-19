@@ -8,8 +8,8 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  menuOpen = false; // This property tracks whether the menu is open
-  isMenuVisible = true; // Control visibility of the toggle button
+  menuOpen = false;
+  isMenuVisible = true; 
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -26,7 +26,7 @@ export class HeaderComponent {
   }
 
   toggleMenu(): void {
-    this.menuOpen = !this.menuOpen; // Toggle the menu visibility
+    this.menuOpen = !this.menuOpen;
   }
 
   logout(): void {
@@ -41,7 +41,7 @@ export class HeaderComponent {
   }
 
   private updateMenuVisibility(): void {
-    this.isMenuVisible = window.innerWidth < 1024; // Show toggle button only on small screens
+    this.isMenuVisible = window.innerWidth < 1024; 
   }
 
   @HostListener('document:click', ['$event'])
@@ -51,7 +51,7 @@ export class HeaderComponent {
     const toggleButton = document.querySelector('.menu-toggle');
 
     if (this.menuOpen && menu && toggleButton && !menu.contains(target) && !toggleButton.contains(target)) {
-      this.menuOpen = false; // Close the menu if clicked outside
+      this.menuOpen = false;
     }
   }
 }
