@@ -44,7 +44,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/Dimensional-Nutrition/"
+              "baseHref": "/"
             },
             "development": {
               "buildOptimizer": false,
